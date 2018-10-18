@@ -1,0 +1,6 @@
+package com.ex.repository;
+
+@Repository
+public class CarRepository {
+
+}

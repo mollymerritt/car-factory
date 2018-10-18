@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.ex.beans.CarIdentity&apos; to &apos;CarId&apos;&#x0A;- Original project: &apos;spring-cars&apos;&#x0A;- Original element: &apos;com.ex.beans.CarIdentity&apos;&#x0A;- Renamed element: &apos;com.ex.beans.CarId&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CarIdentity&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.ex.beans{CarIdentity.java[CarIdentity" matchStrategy="1" name="CarId" qualified="false" references="true" similarDeclarations="false" stamp="1539275851184" textual="false" version="1.0"/>
+</session>

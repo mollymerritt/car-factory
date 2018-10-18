@@ -1,0 +1,12 @@
+package com.ex.repository;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import com.ex.beans.Car;
+
+@Repository
+public class CarRepository extends JpaRepository<Car, Integer> {
+
+}

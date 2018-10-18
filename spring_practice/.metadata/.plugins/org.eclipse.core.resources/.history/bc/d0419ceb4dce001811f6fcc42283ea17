@@ -1,0 +1,40 @@
+package com.ex.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Entity
+@Table(name="EX1_USER")
+public class User {
+	
+	@Id
+	@Column(name="USER_ID")
+	@SequenceGenerator(name="userid", sequenceName="userid")
+	@GeneratedValue(generator="userid", strategy=GenerationType.SEQUENCE)
+	int id;
+	
+	@Column(unique=true, nullable=false, length=40)
+	@NotEmpty
+	String username;
+	
+	@Column(nullable=false, length=40)
+	@NotEmpty
+	String password;
+	
+	@NotEmpty
+	String firstName;
+	
+	@NotEmpty
+	String lastName;
+
+	@NotNull
+	Car car;
+	
+}

@@ -1,0 +1,34 @@
+package com.ex.beans;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CAR_REQUEST")
+public class CarRequest {
+	
+	@Id
+	@Column(name="CAR_REQUEST_ID")
+	@SequenceGenerator(name="carrequestid", sequenceName="carrequestid")
+	@GeneratedValue(generator="carrequestid", strategy=GenerationType.SEQUENCE)
+	int id;
+	
+	@JoinColumn(name="USER_ID", nullable=false)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	User user;
+	
+	@JoinColumn(name="CAR_ID", nullable=false)
+	Set<Car> cars;
+
+}

@@ -1,0 +1,20 @@
+package com.ex.beans;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+public class Car {
+	
+	@Id
+	@SequenceGenerator(name = "carid", sequenceName = "carid")
+	@GeneratedValue(generator = "carid", strategy = GenerationType.SEQUENCE)
+	int id;
+	
+	String make;
+	String model;
+
+}

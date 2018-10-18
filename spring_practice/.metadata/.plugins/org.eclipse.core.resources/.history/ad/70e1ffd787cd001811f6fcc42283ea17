@@ -1,0 +1,38 @@
+package com.ex.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ex.beans.Car;
+import com.ex.beans.CarId;
+import com.ex.repository.CarRepository;
+
+@Service
+public class CarService {
+	
+	@Autowired
+	private CarRepository carRepository;
+	
+	public Car addCar(Car c) {
+		return carRepository.save(c);
+	}
+	
+	public void update(Car c) {
+		carRepository.save(c);
+	}
+	
+	public Car findById(CarId carId) {
+		return carRepository.findByCarId(carId);
+	}
+	
+	public List<Car> findAll() {
+		return carRepository.findAll();
+	}
+	
+	public void delete(Car c) {
+		carRepository.delete(c);
+	}
+	
+}

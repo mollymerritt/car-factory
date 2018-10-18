@@ -1,0 +1,6 @@
+package com.ex;
+
+@SpringBootApplication
+public class App {
+
+}

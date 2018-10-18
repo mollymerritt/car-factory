@@ -1,0 +1,114 @@
+package com.ex.beans;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
+@Table(name="CAR_REQUEST")
+public class CarRequest {
+	
+	@Id
+	@Column(name="CAR_REQUEST_ID")
+	@SequenceGenerator(name="carrequestid", sequenceName="carrequestid")
+	@GeneratedValue(generator="carrequestid", strategy=GenerationType.SEQUENCE)
+	private int id;
+	
+	@JoinColumn(name="USER_ID", referencedColumnName="USER_ID", nullable=false, insertable=false, updatable=false)
+	@ManyToOne(fetch=FetchType.EAGER)
+	private User user;
+	 
+	@Temporal(TemporalType.DATE)
+	private Date dateRequested;
+	
+//	@JoinColumn(name="CAR_ID", nullable=false, insertable=false, updatable=false)
+//	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+//	Set<Car> cars;
+	
+	public CarRequest() {}
+
+	public CarRequest(int id, User user, Date dateRequested) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.dateRequested = dateRequested;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Date getDateRequested() {
+		return dateRequested;
+	}
+
+	public void setDateRequested(Date dateRequested) {
+		this.dateRequested = dateRequested;
+	}
+
+	@Override
+	public String toString() {
+		return "CarRequest [id=" + id + ", user=" + user + ", dateRequested=" + dateRequested + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dateRequested == null) ? 0 : dateRequested.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CarRequest other = (CarRequest) obj;
+		if (dateRequested == null) {
+			if (other.dateRequested != null)
+				return false;
+		} else if (!dateRequested.equals(other.dateRequested))
+			return false;
+		if (id != other.id)
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+
+}

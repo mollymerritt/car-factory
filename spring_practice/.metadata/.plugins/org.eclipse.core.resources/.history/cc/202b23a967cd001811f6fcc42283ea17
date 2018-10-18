@@ -1,0 +1,21 @@
+package com.ex.beans;
+
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class CarIdentity implements Serializable {
+	
+	@NotEmpty
+	String make;
+	
+	@NotEmpty
+	String model;
+	
+	@NotNull
+	int year;
+	
+	String trim;	// XLE, SE, XSE
+
+}

@@ -1,0 +1,10 @@
+package com.ex.beans;
+
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class CarIdentity implements Serializable {
+
+}

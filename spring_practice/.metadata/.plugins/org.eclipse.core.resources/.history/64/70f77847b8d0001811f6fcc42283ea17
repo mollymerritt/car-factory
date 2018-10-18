@@ -1,0 +1,29 @@
+package com.ex.beans;
+
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CAR_REQUEST")
+public class CarRequest {
+	
+	@Id
+	@Column(name="CAR_REQUEST_ID")
+	@SequenceGenerator(name="carrequestid", sequenceName="carrequestid")
+	@GeneratedValue(generator="carrequestid", strategy=GenerationType.SEQUENCE)
+	int id;
+	
+	User user;
+	
+	@JoinColumn(name="CAR_ID", nullable=false)
+	Set<Car> cars;
+
+}

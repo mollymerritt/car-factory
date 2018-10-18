@@ -1,0 +1,11 @@
+package com.ex.repository;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.ex.beans.CarRequest;
+
+@Repository
+public class CarRequestRepository extends JpaRepository<CarRequest, Integer> {
+
+}

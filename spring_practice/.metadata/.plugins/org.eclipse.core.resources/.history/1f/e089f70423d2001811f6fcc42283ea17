@@ -1,0 +1,230 @@
+package com.ex.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Entity
+@Table(name = "CAR")
+public class Car {
+
+	@Id
+	@Column(name = "CAR_ID")
+	@SequenceGenerator(name = "carid", sequenceName = "carid")
+	@GeneratedValue(generator = "carid", strategy = GenerationType.SEQUENCE)
+	int id;
+	
+	@JoinColumn
+	@OneToMany
+	CarRequest carRequest;
+
+	@Column(nullable=false, length=20)
+	@NotEmpty
+	String make;
+	
+	@Column(nullable=false, length=20)
+	@NotEmpty
+	String model;
+	
+	@NotNull
+	int year;
+	
+	@Column(length=10)
+	String trim;	// XLE, SE, XSE
+
+//	@EmbeddedId
+//	private CarId carId;
+
+	@Column(nullable=false, length=10)
+	@NotEmpty
+	String type; // sedan, truck, etc.
+
+	@NotNull
+	double price;
+
+	@NotNull
+	int cityMileage;
+
+	@NotNull
+	int highwayMileage;
+
+	@NotNull
+	int combinedMileage;
+	
+	public Car() {}
+
+	public Car(int id, String make, String model, int year, String trim, String type, double price, int cityMileage,
+			int highwayMileage, int combinedMileage) {
+		super();
+		this.id = id;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+		this.trim = trim;
+		this.type = type;
+		this.price = price;
+		this.cityMileage = cityMileage;
+		this.highwayMileage = highwayMileage;
+		this.combinedMileage = combinedMileage;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMake() {
+		return make;
+	}
+
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public String getTrim() {
+		return trim;
+	}
+
+	public void setTrim(String trim) {
+		this.trim = trim;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getCityMileage() {
+		return cityMileage;
+	}
+
+	public void setCityMileage(int cityMileage) {
+		this.cityMileage = cityMileage;
+	}
+
+	public int getHighwayMileage() {
+		return highwayMileage;
+	}
+
+	public void setHighwayMileage(int highwayMileage) {
+		this.highwayMileage = highwayMileage;
+	}
+
+	public int getCombinedMileage() {
+		return combinedMileage;
+	}
+
+	public void setCombinedMileage(int combinedMileage) {
+		this.combinedMileage = combinedMileage;
+	}
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", make=" + make + ", model=" + model + ", year=" + year + ", trim=" + trim + ", type="
+				+ type + ", price=" + price + ", cityMileage=" + cityMileage + ", highwayMileage=" + highwayMileage
+				+ ", combinedMileage=" + combinedMileage + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cityMileage;
+		result = prime * result + combinedMileage;
+		result = prime * result + highwayMileage;
+		result = prime * result + id;
+		result = prime * result + ((make == null) ? 0 : make.hashCode());
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((trim == null) ? 0 : trim.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + year;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		if (cityMileage != other.cityMileage)
+			return false;
+		if (combinedMileage != other.combinedMileage)
+			return false;
+		if (highwayMileage != other.highwayMileage)
+			return false;
+		if (id != other.id)
+			return false;
+		if (make == null) {
+			if (other.make != null)
+				return false;
+		} else if (!make.equals(other.make))
+			return false;
+		if (model == null) {
+			if (other.model != null)
+				return false;
+		} else if (!model.equals(other.model))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (trim == null) {
+			if (other.trim != null)
+				return false;
+		} else if (!trim.equals(other.trim))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		if (year != other.year)
+			return false;
+		return true;
+	}
+	
+	
+
+}

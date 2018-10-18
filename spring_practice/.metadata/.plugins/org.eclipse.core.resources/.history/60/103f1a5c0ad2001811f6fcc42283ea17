@@ -1,0 +1,110 @@
+package com.ex.beans;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CAR_REQUEST")
+public class CarRequest {
+	
+	@Id
+	@Column(name="CAR_REQUEST_ID")
+	@SequenceGenerator(name="carrequestid", sequenceName="carrequestid")
+	@GeneratedValue(generator="carrequestid", strategy=GenerationType.SEQUENCE)
+	int id;
+	
+	@JoinColumn(name="USER_ID", nullable=false, insertable=false, updatable=false)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	User user;
+	
+	@JoinColumn(name="CAR_ID", nullable=false, insertable=false, updatable=false)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	Set<Car> cars;
+	
+	public CarRequest() {}
+
+	public CarRequest(int id, User user, Set<Car> cars) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.cars = cars;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Set<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(Set<Car> cars) {
+		this.cars = cars;
+	}
+
+	@Override
+	public String toString() {
+		return "CarRequest [id=" + id + ", user=" + user + ", cars=" + cars + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cars == null) ? 0 : cars.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CarRequest other = (CarRequest) obj;
+		if (cars == null) {
+			if (other.cars != null)
+				return false;
+		} else if (!cars.equals(other.cars))
+			return false;
+		if (id != other.id)
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+	
+	
+
+}

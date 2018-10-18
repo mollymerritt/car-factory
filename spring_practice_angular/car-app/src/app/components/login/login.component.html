@@ -1,0 +1,13 @@
+<div>
+  <form (submit)="login()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required [(ngModel)]='username'/><br>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required [(ngModel)]='password'/><br>
+    </div>
+  </form>
+
+  <button type="submit" id="login" name="login" onClick="" class="btn btn-success">Log In</button>
+</div>

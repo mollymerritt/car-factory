@@ -1,0 +1,14 @@
+package com.ex.beans;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CAR_REQUEST_EX")
+public class CarRequest {
+	
+	@Id
+	@Column(name="CAR_REQUEST_ID")
+	int id;
+
+}

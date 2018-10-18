@@ -1,0 +1,75 @@
+package com.ex.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ex.beans.Car;
+import com.ex.beans.CarRequest;
+import com.ex.services.CarRequestService;
+
+@RestController
+@RequestMapping("/car-request")
+public class CarRequestController {
+	
+	@Autowired
+	private CarRequestService carRequestService;
+	
+	// ADD CAR REQUEST
+	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE,
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<CarRequest> addCarRequest(@RequestBody CarRequest carRequest) {
+		carRequest = carRequestService.addCarRequest(carRequest);
+		System.out.println(carRequest);
+		return carRequest == null
+				? new ResponseEntity<CarRequest>(carRequest, HttpStatus.CONFLICT)
+				: new ResponseEntity<CarRequest>(carRequest, HttpStatus.CREATED);
+	}
+	
+	// GET ALL
+	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<CarRequest>> getAll() {
+		List<CarRequest> carRequests = carRequestService.findAll();
+		return carRequests.size() == 0
+				? new ResponseEntity<List<CarRequest>>(carRequests, HttpStatus.NOT_FOUND)
+				: new ResponseEntity<List<CarRequest>>(carRequests, HttpStatus.OK);
+	}
+	
+	// GET BY ID
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<CarRequest> getById(@PathVariable int id) {
+		CarRequest carRequests = carRequestService.findById(id);
+		return carRequest == null
+				? new ResponseEntity<Car>(carRequest, HttpStatus.NOT_FOUND)
+				: new ResponseEntity<Car>(carRequest, HttpStatus.OK);
+	}
+	
+	// UPDATE
+	@PutMapping(value="/{id}", consumes=MediaType.APPLICATION_JSON_VALUE,
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Car> updateCar(@PathVariable int id, @RequestBody Car car) {
+		car.setId(id);
+		Car c = carService.findById(id);
+		return c == null
+				? new ResponseEntity<Car>(carService.update(car), HttpStatus.NOT_FOUND)
+				: new ResponseEntity<Car>(carService.update(car), HttpStatus.OK);
+	}
+	
+	@DeleteMapping
+	public ResponseEntity<Car> deleteCar(@RequestBody Car car) {
+		carService.delete(car);
+		return new ResponseEntity<Car>(car, HttpStatus.OK);
+	}
+	
+}

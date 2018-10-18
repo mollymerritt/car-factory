@@ -1,0 +1,10 @@
+package com.ex.repository;
+
+import org.springframework.stereotype.Repository;
+
+import com.ex.beans.CarRequest;
+
+@Repository
+public class CarRequestRepository extends JpaRepository<CarRequest, Integer> {
+
+}
