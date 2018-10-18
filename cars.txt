@@ -1,0 +1,82 @@
+{
+	"make":"Toyota",
+	"model":"Corolla",
+	"year":2019,
+	"trim":"XLE",
+	"type":"Sedan",
+	"price":22135,
+	"cityMileage":28,
+	"highwayMileage":36,
+	"combinedMileage":32
+}
+
+{
+	"make":"Toyota",
+	"model":"Corolla",
+	"year":2019,
+	"trim":"SE",
+	"type":"Sedan",
+	"price":21865,
+	"cityMileage":27,
+	"highwayMileage":35,
+	"combinedMileage":30
+}
+
+{
+	"make":"Toyota",
+	"model":"Corolla",
+	"year":2019,
+	"trim":"XSE",
+	"type":"Sedan",
+	"price":22880,
+	"cityMileage":28,
+	"highwayMileage":35,
+	"combinedMileage":31
+}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+{
+	"carIdentity":
+	{
+		"make":"Toyota",
+		"model":"Corolla",
+		"year":2019,
+		"trim":"XLE"
+	},
+	"type":"Sedan",
+	"price":22135,
+	"cityMileage":28,
+	"highwayMileage":36,
+	"combinedMileage":32
+}
+
+{
+	"carIdentity":
+	{
+		"make":"Toyota",
+		"model":"Corolla",
+		"year":2019,
+		"trim":"SE"
+	},
+	"type":"Sedan",
+	"price":21865,
+	"cityMileage":27,
+	"highwayMileage":35,
+	"combinedMileage":30
+}
+
+{
+	"carIdentity":
+	{
+		"make":"Toyota",
+		"model":"Corolla",
+		"year":2019,
+		"trim":"XSE"
+	},
+	"type":"Sedan",
+	"price":22880,
+	"cityMileage":28,
+	"highwayMileage":35,
+	"combinedMileage":31
+}
