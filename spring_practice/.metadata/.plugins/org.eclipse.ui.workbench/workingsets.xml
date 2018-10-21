@@ -12,4 +12,5 @@
 <item elementID="=spring-cars-example/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1539196027970_2" label="Window Working Set" name="Aggregate for window 1539196027969"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1540141613063_3" label="Window Working Set" name="Aggregate for window 1540141613063"/>
 </workingSetManager>
