@@ -23,6 +23,7 @@ export class UserComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     this.user = JSON.parse(this.cookieService.get('user'));
+    console.log(this.user);
   }
 
 }

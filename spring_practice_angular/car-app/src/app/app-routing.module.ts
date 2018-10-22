@@ -6,6 +6,7 @@ import { RegisterComponent } from 'src/app/components/register/register.componen
 import { CarComponent } from 'src/app/components/car/car.component';
 import { LogoutComponent } from 'src/app/components/logout/logout.component';
 import { LandingComponent } from 'src/app/components/landing/landing.component';
+import { UserComponent } from 'src/app/components/user/user.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'car', component: CarComponent },
     { path: 'logout', component: LogoutComponent },
-    { path: 'landing', component: LandingComponent }
+    { path: 'landing', component: LandingComponent },
+    { path: 'account', component: UserComponent }
 
 ];
 
