@@ -7,7 +7,9 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required [(ngModel)]='password'/><br>
     </div>
+    <input type="submit" class="btn btn-success" value="Log In">
   </form>
-
-  <button type="submit" id="login" name="login" onClick="" class="btn btn-success">Log In</button>
+  <div id="message" *ngIf="this.invalidLogin">
+    The username or password you have entered is incorrect.
+  </div>
 </div>

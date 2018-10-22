@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log('in login method');
     this.auth.login(this.username, this.password).subscribe(
       data => {
         this.user = data;
@@ -34,10 +35,10 @@ export class LoginComponent implements OnInit {
           this.invalidLogin = true;
         } else {  // correct login information
 
-          // console.log('this.user');
-          // console.log(this.user);
+          console.log('this.user');
+          console.log(this.user);
 
-          // this.cookieService.deleteAll(); // do we need this?
+          // this.cookieService.deleteAll(); // is this necessary?
           this.cookieService.set('user', JSON.stringify(this.user));
           // console.log(this.cookieService.getAll());
           this.invalidLogin = false;
