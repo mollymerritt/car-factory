@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { User } from './../../models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,15 @@ export class LoginComponent implements OnInit {
   private password: string;
   private user: User;
 
+  private invalidLogin: boolean;
+
   constructor(
     private router: Router,
+    private auth: AuthService,
     private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.invalidLogin = false;
   }
 
   login() {
