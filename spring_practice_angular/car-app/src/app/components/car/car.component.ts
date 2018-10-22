@@ -66,6 +66,7 @@ export class CarComponent implements OnInit {
     console.log('deleting car');
     console.log(c);
     this.carService.deleteCar(c).subscribe();
+    // this.cars.splice(c.id, 1);
     this.carService.findAllCars().subscribe(
       data => {
         this.cars = [];
@@ -74,6 +75,7 @@ export class CarComponent implements OnInit {
       }
     );
     console.log('end of deleteCar method');
+    console.log('cars' + this.cars);
   }
 
 }
