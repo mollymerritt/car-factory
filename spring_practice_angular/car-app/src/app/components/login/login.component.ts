@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           this.cookieService.set('user', JSON.stringify(this.user));
           // console.log(this.cookieService.getAll());
           this.invalidLogin = false;
-          this.router.navigate(['/petsitting']);
+          this.router.navigate(['/car']);
         }
       }
     );
