@@ -21,13 +21,12 @@ public class UserService {
 			if (user.getUsername().equals(u.getUsername())) {
 				invalidUsername = true;
 			}
+			if (invalidUsername) {
+				user.setUsername(null);
+				return user;
+			}
 		}
-		if (invalidUsername) {
-			user.setUsername(null);
-			return user;
-		} else {
-			return userRepository.save(user);
-		}
+		return userRepository.save(user);
 	}
 	
 	public User update(User user) {

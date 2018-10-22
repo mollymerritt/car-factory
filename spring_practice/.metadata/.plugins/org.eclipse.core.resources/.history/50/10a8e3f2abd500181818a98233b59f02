@@ -16,18 +16,7 @@ public class UserService {
 	
 	public User addUser(User user) {
 		List<User> users = userRepository.findAll();
-		boolean invalidUsername = false;
-		for (User u: users) {
-			if (user.getUsername().equals(u.getUsername())) {
-				invalidUsername = true;
-			}
-		}
-		if (invalidUsername) {
-			user.setUsername(null);
-			return user;
-		} else {
-			return userRepository.save(user);
-		}
+		return userRepository.save(user);
 	}
 	
 	public User update(User user) {

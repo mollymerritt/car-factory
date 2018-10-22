@@ -25,9 +25,8 @@ public class UserService {
 		if (invalidUsername) {
 			user.setUsername(null);
 			return user;
-		} else {
-			return userRepository.save(user);
 		}
+		return userRepository.save(user);
 	}
 	
 	public User update(User user) {
