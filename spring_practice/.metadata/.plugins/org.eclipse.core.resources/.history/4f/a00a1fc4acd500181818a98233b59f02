@@ -26,15 +26,7 @@ public class LoginController {
 	public ResponseEntity<User> login(@RequestBody User user) {
 		User u = userService.findByUsername(user.getUsername());
 		if (u == null) {
-			return new ResponseEntity<User>(u, HttpStatus.CONFLICT);
-		} else {
-			if (u.getId() == 0) {
-				return new ResponseEntity<User>(new User(), HttpStatus.CREATED);
-			} else if (u.getPassword().equals(user.getPassword())) {
-				return new ResponseEntity<User>(u, HttpStatus.OK); 
-			} else { 	// incorrect password
-				return new ResponseEntity<User>(new User(), HttpStatus.CONFLICT);
-			}
+			return new ResponseEntity<User>(u, HttpStatus.CONFLICT);)
 		}
 	}
 

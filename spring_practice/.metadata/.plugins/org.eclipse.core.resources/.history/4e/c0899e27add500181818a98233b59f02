@@ -33,7 +33,7 @@ public class LoginController {
 			} else if (u.getPassword().equals(user.getPassword())) {
 				return new ResponseEntity<User>(u, HttpStatus.OK); 
 			} else { 	// incorrect password
-				return new ResponseEntity<User>(new User(), HttpStatus.CONFLICT);
+				return new ResponseEntity<User>(new User(), HttpStatus.CONFLICT)
 			}
 		}
 	}
