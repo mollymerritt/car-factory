@@ -22,6 +22,7 @@ export class CarComponent implements OnInit {
   private combinedMileage: number;
 
   private car: Car;
+  private cars: Car[];
 
   constructor(
     private carService: CarService,
@@ -32,6 +33,12 @@ export class CarComponent implements OnInit {
     if (!this.navbarService.isLoggedIn()) {
       this.router.navigate(['/home']);
     }
+
+    this.carService.findAllCars().subscribe(
+      data => {
+        this.cars = data;
+      }
+    );
   }
 
   addCar() {
@@ -48,6 +55,25 @@ export class CarComponent implements OnInit {
           this.car = data;
         }
       );
+      this.carService.findAllCars().subscribe(
+        data => {
+          this.cars = data;
+        }
+      );
+  }
+
+  deleteCar(c: Car) {
+    console.log('deleting car');
+    console.log(c);
+    this.carService.deleteCar(c).subscribe();
+    this.carService.findAllCars().subscribe(
+      data => {
+        this.cars = [];
+        this.cars = data;
+        console.log(data);
+      }
+    );
+    console.log('end of deleteCar method');
   }
 
 }

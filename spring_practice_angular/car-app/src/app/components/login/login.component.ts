@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         this.user = data;
         if (this.user.id === 0) { // incorrect login information
           this.invalidLogin = true;
+          console.log('invalid user information');
         } else {  // correct login information
 
           console.log('this.user');

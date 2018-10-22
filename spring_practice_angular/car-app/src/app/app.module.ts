@@ -16,6 +16,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { LogoutComponent } from './components/logout/logout.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

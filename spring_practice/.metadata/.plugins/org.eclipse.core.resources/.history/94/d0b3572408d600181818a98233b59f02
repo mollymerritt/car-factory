@@ -23,7 +23,7 @@ import com.ex.services.CarService;
 
 @RestController
 @RequestMapping("/cars")
-@CrossOrigin()
+@CrossOrigin("*")
 public class CarController {
 	
 	@Autowired
@@ -78,11 +78,10 @@ public class CarController {
 	
 	// DELETE BY ID
 	@Transactional
-	@DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Car> deleteUserById(@PathVariable int id) {
 		Car car = carService.findById(id);
 		carService.deleteById(id);
-		System.out.println(car);
 		return car == null ? new ResponseEntity<Car>(car, HttpStatus.NOT_FOUND)
 				: new ResponseEntity<Car>(car, HttpStatus.OK);
 	}
