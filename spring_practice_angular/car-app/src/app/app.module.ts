@@ -14,8 +14,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { LogoutService } from 'src/app/services/logout.service';
 import { NavbarService } from 'src/app/services/navbar.service';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { NavbarService } from 'src/app/services/navbar.service';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,6 @@ import { NavbarService } from 'src/app/services/navbar.service';
   providers: [
     CarService,
     AuthService,
-    LogoutService,
     NavbarService,
     CookieService
   ],
