@@ -38,7 +38,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     CarService,
     AuthService,
     NavbarService,
-    CookieService
+    CookieService,
   ],
   bootstrap: [AppComponent]
 })

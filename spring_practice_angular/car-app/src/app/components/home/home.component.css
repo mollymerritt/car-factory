@@ -1,0 +1,12 @@
+.center {
+    margin: auto;
+    width: 30%;
+    border: 3px solid gray;
+    /* padding: 10px; */
+    padding: 70px 0;
+    text-align: center;
+}
+#outer {
+    text-align: center;
+    padding: 70px 0;
+}
