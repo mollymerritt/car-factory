@@ -30,7 +30,7 @@ public class CarRequest {
 	private int id;
 	
 //	@JoinColumn(name="USER_ID", insertable=false, updatable=false)
-	@JoinColumn(name="USER_ID", nullable=false)
+	@JoinColumn(name="USER_ID")
 	@ManyToOne(fetch=FetchType.EAGER)
 	private User user;
 	

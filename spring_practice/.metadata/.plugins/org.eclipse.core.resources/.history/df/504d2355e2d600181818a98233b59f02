@@ -2,12 +2,9 @@ package com.ex.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -62,11 +59,10 @@ public class Car {
 	
 	public Car() {}
 
-	public Car(int id, CarRequest carRequest, String make, String model, int year, String trim, String type,
-			double price, int cityMileage, int highwayMileage, int combinedMileage) {
+	public Car(int id, String make, String model, int year, String trim, String type, double price, int cityMileage,
+			int highwayMileage, int combinedMileage) {
 		super();
 		this.id = id;
-		this.carRequest = carRequest;
 		this.make = make;
 		this.model = model;
 		this.year = year;
@@ -84,14 +80,6 @@ public class Car {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public CarRequest getCarRequest() {
-		return carRequest;
-	}
-
-	public void setCarRequest(CarRequest carRequest) {
-		this.carRequest = carRequest;
 	}
 
 	public String getMake() {
@@ -168,16 +156,15 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car [id=" + id + ", carRequest=" + carRequest + ", make=" + make + ", model=" + model + ", year=" + year
-				+ ", trim=" + trim + ", type=" + type + ", price=" + price + ", cityMileage=" + cityMileage
-				+ ", highwayMileage=" + highwayMileage + ", combinedMileage=" + combinedMileage + "]";
+		return "Car [id=" + id + ", make=" + make + ", model=" + model + ", year=" + year + ", trim=" + trim + ", type="
+				+ type + ", price=" + price + ", cityMileage=" + cityMileage + ", highwayMileage=" + highwayMileage
+				+ ", combinedMileage=" + combinedMileage + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((carRequest == null) ? 0 : carRequest.hashCode());
 		result = prime * result + cityMileage;
 		result = prime * result + combinedMileage;
 		result = prime * result + highwayMileage;
@@ -202,11 +189,6 @@ public class Car {
 		if (getClass() != obj.getClass())
 			return false;
 		Car other = (Car) obj;
-		if (carRequest == null) {
-			if (other.carRequest != null)
-				return false;
-		} else if (!carRequest.equals(other.carRequest))
-			return false;
 		if (cityMileage != other.cityMileage)
 			return false;
 		if (combinedMileage != other.combinedMileage)
@@ -241,7 +223,7 @@ public class Car {
 			return false;
 		return true;
 	}
-
+	
 	
 
 }

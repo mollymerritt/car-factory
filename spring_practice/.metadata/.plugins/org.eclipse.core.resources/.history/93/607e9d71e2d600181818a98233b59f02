@@ -1,0 +1,67 @@
+package com.ex.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@Entity
+@Table(name = "CAR")
+@CrossOrigin("*")
+public class Car {
+
+	@Id
+	@Column(name = "CAR_ID")
+	@SequenceGenerator(name = "carid", sequenceName = "carid", allocationSize=1)
+	@GeneratedValue(generator = "carid", strategy = GenerationType.SEQUENCE)
+	int id;
+	
+	@JoinColumn(name="CAR_REQUEST_ID", nullable=false)
+	@ManyToOne(fetch=FetchType.EAGER)
+	CarRequest carRequest;
+
+	@Column(nullable=false, length=20)
+	@NotEmpty
+	String make;
+	
+	@Column(nullable=false, length=20)
+	@NotEmpty
+	String model;
+	
+	@NotNull
+	int year;
+	
+	@Column(length=10)
+	String trim;
+
+	@Column(nullable=false, length=10)
+	@NotEmpty
+	String type;
+
+	@NotNull
+	double price;
+
+	@NotNull
+	int cityMileage;
+
+	@NotNull
+	int highwayMileage;
+
+	@NotNull
+	int combinedMileage;
+	
+	public Car() {}
+
+	
+
+}
