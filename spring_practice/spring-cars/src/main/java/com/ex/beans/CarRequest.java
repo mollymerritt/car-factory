@@ -25,7 +25,7 @@ public class CarRequest {
 	
 	@Id
 	@Column(name="CAR_REQUEST_ID")
-	@SequenceGenerator(name="carrequestid", sequenceName="carrequestid")
+	@SequenceGenerator(name="carrequestid", sequenceName="carrequestid", allocationSize=1)
 	@GeneratedValue(generator="carrequestid", strategy=GenerationType.SEQUENCE)
 	private int id;
 	

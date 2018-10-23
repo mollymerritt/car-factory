@@ -19,7 +19,7 @@ public class Car {
 
 	@Id
 	@Column(name = "CAR_ID")
-	@SequenceGenerator(name = "carid", sequenceName = "carid")
+	@SequenceGenerator(name = "carid", sequenceName = "carid", allocationSize=1)
 	@GeneratedValue(generator = "carid", strategy = GenerationType.SEQUENCE)
 	int id;
 
