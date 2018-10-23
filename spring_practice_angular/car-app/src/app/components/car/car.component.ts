@@ -51,7 +51,8 @@ export class CarComponent implements OnInit {
 
   addCar() {
     this.addCarRequest();
-    this.carService.addCar(this.make,
+    this.carService.addCar(this.carRequest,
+      this.make,
       this.model,
       this.year,
       this.trim,
