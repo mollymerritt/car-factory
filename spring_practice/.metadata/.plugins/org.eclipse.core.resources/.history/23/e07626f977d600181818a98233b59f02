@@ -29,8 +29,8 @@ public class CarRequest {
 	@GeneratedValue(generator="carrequestid", strategy=GenerationType.SEQUENCE)
 	private int id;
 	
-	@JoinColumn(name="USER_ID", insertable=false, updatable=false)
-	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="USER_ID", nullable=false, insertable=false, updatable=false)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private User user;
 	
 	@Temporal(TemporalType.DATE)
