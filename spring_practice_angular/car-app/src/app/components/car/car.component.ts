@@ -3,6 +3,9 @@ import { CarService } from './../../services/car.service';
 import { Car } from './../../models/car.model';
 import { Router } from '@angular/router';
 import { NavbarService } from 'src/app/services/navbar.service';
+import { CarRequest } from 'src/app/models/car-request.model';
+import { User } from 'src/app/models/user.model';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-car',
@@ -21,18 +24,23 @@ export class CarComponent implements OnInit {
   private highwayMileage: number;
   private combinedMileage: number;
 
+  private user: User;
+  private carRequest: CarRequest;
   private car: Car;
   private cars: Car[];
 
   constructor(
     private carService: CarService,
     private router: Router,
-    private navbarService: NavbarService) { }
+    private navbarService: NavbarService,
+    private cookieService: CookieService) { }
 
   ngOnInit() {
     if (!this.navbarService.isLoggedIn()) {
       this.router.navigate(['/home']);
     }
+
+    this.user = JSON.parse(this.cookieService.get('user'));
 
     this.carService.findAllCars().subscribe(
       data => {
@@ -42,6 +50,7 @@ export class CarComponent implements OnInit {
   }
 
   addCar() {
+    this.addCarRequest();
     this.carService.addCar(this.make,
       this.model,
       this.year,
@@ -60,6 +69,15 @@ export class CarComponent implements OnInit {
           this.cars = data;
         }
       );
+  }
+
+  addCarRequest() {
+    this.carRequest = { id: 0, user: this.user, dateRequested: null };
+    this.carService.addCarRequest(this.carRequest).subscribe(
+      data => {
+        this.carRequest = data;
+      }
+    );
   }
 
   deleteCar(c: Car) {

@@ -1,7 +1,7 @@
 import { User } from '../models/user.model';
 
 export class CarRequest {
-    id: string;
+    id: number;
     user: User;
     dateRequested: Date;
 }

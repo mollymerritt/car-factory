@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 // import { Car } from './../models/car.model';
 import { Observable } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
+import { User } from 'src/app/models/user.model';
+import { CarRequest } from 'src/app/models/car-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,10 @@ export class CarService {
     const id = car.id;
     console.log(`deleting car by id: ${id}`);
     return this.http.delete<any>(`http://localhost:5555/cars/${id}`);
+  }
+
+  addCarRequest(carRequest: CarRequest): Observable<any> {
+    return this.http.post<any>('http://localhost:5555/car-request', carRequest);
   }
 
 }
