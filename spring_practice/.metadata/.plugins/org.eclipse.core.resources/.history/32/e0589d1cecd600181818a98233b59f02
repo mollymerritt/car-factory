@@ -23,7 +23,7 @@ import com.ex.services.CarRequestService;
 
 @RestController
 @RequestMapping("/car-requests")
-@CrossOrigin()
+@CrossOrigin
 public class CarRequestController {
 
 	@Autowired

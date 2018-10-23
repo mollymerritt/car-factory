@@ -14,6 +14,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class CarComponent implements OnInit {
 
+  private ifRequest: boolean;
+
   private make: string;
   private model: string;
   private year: number;
@@ -41,6 +43,7 @@ export class CarComponent implements OnInit {
     }
 
     this.user = JSON.parse(this.cookieService.get('user'));
+    this.ifRequest = false;
 
     this.carService.findAllCars().subscribe(
       data => {
@@ -49,8 +52,26 @@ export class CarComponent implements OnInit {
     );
   }
 
-  addCar() {
+  requestButton() {
+    this.ifRequest = !this.ifRequest;
     this.addCarRequest();
+  }
+
+  // addCar() {
+  //   this.addNewCar(function() {
+  //     this.addCarRequest();
+  //   });
+  // }
+  // addCar() {
+  //   this.addCarRequest(function() {
+  //     this.addNewCar();
+  //     console.log(this.car);
+  //   });
+  // }
+
+  addCar() {
+    console.log('in addNewCar() method');
+    // this.addCarRequest();
     this.carService.addCar(this.carRequest,
       this.make,
       this.model,
@@ -65,14 +86,17 @@ export class CarComponent implements OnInit {
           this.car = data;
         }
       );
+      console.log(this.car);
       this.carService.findAllCars().subscribe(
         data => {
           this.cars = data;
         }
       );
+      console.log(this.cars);
   }
 
   addCarRequest() {
+    console.log('in addCarRequest() method');
     this.carRequest = { id: 0, user: this.user, dateRequested: null };
     this.carService.addCarRequest(this.carRequest).subscribe(
       data => {

@@ -31,7 +31,7 @@ export class CarService {
   }
 
   addCarRequest(carRequest: CarRequest): Observable<any> {
-    return this.http.post<any>('http://localhost:5555/car-request', carRequest);
+    return this.http.post<any>('http://localhost:5555/car-requests', carRequest);
   }
 
 }
