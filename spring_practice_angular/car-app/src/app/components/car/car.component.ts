@@ -93,6 +93,7 @@ export class CarComponent implements OnInit {
         }
       );
       console.log(this.cars);
+      this.ifRequest = false;
   }
 
   addCarRequest() {

@@ -1,8 +1,0 @@
-package com.ex.beans;
-
-import org.springframework.context.annotation.Bean;
-
-@Bean
-public class Car {
-
-}

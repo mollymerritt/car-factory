@@ -1,8 +1,0 @@
-package com.ex.beans;
-
-import java.io.Serializable;
-
-@Embeddable
-public class CarIdentity implements Serializable {
-
-}

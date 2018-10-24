@@ -1,6 +1,0 @@
-package com.ex.controllers;
-
-@RestController
-public class CarController {
-
-}
