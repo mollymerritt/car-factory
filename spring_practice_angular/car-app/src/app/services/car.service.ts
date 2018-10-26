@@ -11,12 +11,14 @@ import { CarRequest } from 'src/app/models/car-request.model';
 })
 export class CarService {
 
+  // BehaviorSubject<Car[]>
   constructor(private http: HttpClient) { }
 
   addCar(carRequest: CarRequest, make: string, model: string, year: number, trim: string, type: string, price: number,
         cityMileage: number, highwayMileage: number, combinedMileage: number): Observable<any> {
     const car = { carRequest: carRequest, make: make, model: model, year: year, trim: trim, type: type, price: price,
         cityMileage: cityMileage, highwayMileage: highwayMileage, combinedMileage: combinedMileage };
+        this.findAllCars();
     return this.http.post<any>('http://localhost:5555/cars', car);
   }
 

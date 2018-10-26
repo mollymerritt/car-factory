@@ -1,38 +1,57 @@
 <h1 class="jumbotron text-center">My Requests</h1>
 
 <!-- <div id="outermost" class="col-3 col-md-offset-4 centered"> -->
-<div class="container justify-content-center">
-  <div id="outer" class="row justify-content-center">
-    <div class="col col-4 offset-4"> </div>
-    <button class="button" *ngIf="!ifRequest" (click)="requestButton()">New Request</button>
-    <!-- <div class="col col-4 col-md-offset-4"> -->
-      <form (submit)="addCar()" *ngIf="ifRequest">
-        <label for="make">Make: </label>
-        <input type="text" id="make" class="form-control" name="make" placeholder="Make" required [(ngModel)]="make"><br>
-        <label for="model">Model: </label>
-        <input type="text" id="model" class="form-control" name="model" placeholder="Model" required [(ngModel)]="model"><br>
-        <label for="year">Year: </label>
-        <input type="number" id="year" class="form-control" name="year" placeholder="Year" required [(ngModel)]="year"><br>
-        <label for="trim">Trim: </label>
-        <input type="text" id="trim" class="form-control" name="trim" placeholder="Trim" [(ngModel)]="trim"><br>
-        <label for="type">Type: </label>
-        <input type="text" id="type" class="form-control" name="type" placeholder="Type" required [(ngModel)]="type"><br>
-        <label for="price">Price: </label>
-        <input type="number" id="price" class="form-control" name="price" placeholder="Price" required [(ngModel)]="price"><br>
-        <label for="cityMileage">City Mileage: </label>
-        <input type="number" id="cityMileage" class="form-control" name="cityMileage" placeholder="City Mileage" required [(ngModel)]="cityMileage"><br>
-        <label for="highwayMileage">Highway Mileage:</label>
-        <input type="number" id="highwayMileage" class="form-control" name="highwayMileage" placeholder="Highway Mileage" required [(ngModel)]="highwayMileage"><br>
-        <label for="combinedMileage">Combined Mileage:</label>
-        <input type="number" id="combinedMileage" class="form-control" name="combinedMileage" placeholder="Combined Mileage" required [(ngModel)]="combinedMileage"><br>
-        <input type="submit" class="btn btn-success" value="Add Car">
-      </form>
-    <!-- </div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mx-auto" style="margin-bottom: 25px">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center">
+            <button class="btn btn-primary" *ngIf="!ifRequest" (click)="requestButton()">New Request</button>
+          </div>
+
+          <!-- <div class="col col-4 col-md-offset-4"> -->
+          <form (submit)="addCar()" *ngIf="ifRequest">
+            <label for="make">Make: </label>
+            <input type="text" id="make" class="form-control" name="make" placeholder="Make" required [(ngModel)]="make">
+            <br>
+            <label for="model">Model: </label>
+            <input type="text" id="model" class="form-control" name="model" placeholder="Model" required [(ngModel)]="model">
+            <br>
+            <label for="year">Year: </label>
+            <input type="number" id="year" class="form-control" name="year" placeholder="Year" required [(ngModel)]="year">
+            <br>
+            <label for="trim">Trim: </label>
+            <input type="text" id="trim" class="form-control" name="trim" placeholder="Trim" [(ngModel)]="trim">
+            <br>
+            <label for="type">Type: </label>
+            <input type="text" id="type" class="form-control" name="type" placeholder="Type" required [(ngModel)]="type">
+            <br>
+            <label for="price">Price: </label>
+            <input type="number" id="price" class="form-control" name="price" placeholder="Price" required [(ngModel)]="price">
+            <br>
+            <label for="cityMileage">City Mileage: </label>
+            <input type="number" id="cityMileage" class="form-control" name="cityMileage" placeholder="City Mileage" required [(ngModel)]="cityMileage">
+            <br>
+            <label for="highwayMileage">Highway Mileage:</label>
+            <input type="number" id="highwayMileage" class="form-control" name="highwayMileage" placeholder="Highway Mileage" required
+              [(ngModel)]="highwayMileage">
+            <br>
+            <label for="combinedMileage">Combined Mileage:</label>
+            <input type="number" id="combinedMileage" class="form-control" name="combinedMileage" placeholder="Combined Mileage" required
+              [(ngModel)]="combinedMileage">
+            <br>
+            <input type="submit" class="btn btn-success" value="Add Car">
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div id="carTableDiv">
-  <table id="carTable" class="table table-sm table-hover table-striped table-bordered thead-light col-10" align="center">
+<div id="carTableDiv" class="row">
+  <div class="table-responsive col-10 mx-auto">
+    <table id="carTable" class="table table-hover table-striped table-bordered thead-light" align="center">
       <thead>
         <tr>
           <th scope="col">Make</th>
@@ -59,8 +78,9 @@
           <td>{{c.highwayMileage}}</td>
           <td>{{c.combinedMileage}}</td>
           <!-- <button class="btn btn-danger" size="xs" rounded="true" (click)="deleteCar(c)">Remove</button> -->
-          <button class="button" (click)="deleteCar(c)">Remove</button>
+          <td><button class="btn btn-danger" (click)="deleteCar(c)">Remove</button></td>
         </tr>
       </tbody>
     </table>
+  </div>
 </div>

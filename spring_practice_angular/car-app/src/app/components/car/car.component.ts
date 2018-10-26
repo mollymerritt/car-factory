@@ -29,7 +29,7 @@ export class CarComponent implements OnInit {
   private user: User;
   private carRequest: CarRequest;
   private car: Car;
-  private cars: Car[];
+  private cars: Car[]; // Observable<Car[]>
 
   constructor(
     private carService: CarService,
@@ -84,14 +84,14 @@ export class CarComponent implements OnInit {
       this.combinedMileage).subscribe(
         data => {
           this.car = data;
+          // this.carService.findAllCars().subscribe(
+          //   data2 => {
+          //     this.cars = data2;
+          //   }
+          // );
         }
       );
-      console.log(this.car);
-      this.carService.findAllCars().subscribe(
-        data => {
-          this.cars = data;
-        }
-      );
+      // console.log(this.car);
       console.log(this.cars);
       this.ifRequest = false;
   }
@@ -111,13 +111,18 @@ export class CarComponent implements OnInit {
     console.log(c);
     this.carService.deleteCar(c).subscribe();
     // this.cars.splice(c.id, 1);
-    this.carService.findAllCars().subscribe(
-      data => {
-        this.cars = [];
-        this.cars = data;
-        console.log(data);
-      }
-    );
+    // this.carService.findAllCars().subscribe(
+    //   data => {
+    //     this.cars = [];
+    //     this.cars = data;
+    //     console.log(data);
+    //   }
+    // );
+    for (let i = 0; i < this.cars.length; i++) {
+      // if (this.carRequests[i]["id"] == r.id) {
+      //   this.carRequests.splice(i, 1);
+      // }
+    }
     console.log('end of deleteCar method');
     console.log('cars' + this.cars);
   }
